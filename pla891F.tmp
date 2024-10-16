@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://52fm2cehwcs5"]
+
+[ext_resource type="Texture2D" uid="uid://ci5l1c40bw61p" path="res://Untitled 08-14-2024 11-08-44.png" id="1_by07c"]
+[ext_resource type="Script" path="res://player.gd" id="1_coddy"]
+[ext_resource type="PackedScene" uid="uid://di33echt7hdsm" path="res://joystick.tscn" id="2_c2hyk"]
+[ext_resource type="Texture2D" uid="uid://olqv7jwiby6w" path="res://Sprite-0002.jpg" id="3_yenjr"]
+[ext_resource type="Script" path="res://player_input.gd" id="4_vesqn"]
+[ext_resource type="Texture2D" uid="uid://ns0a5q1nw74x" path="res://hit0.png" id="4_wbqna"]
+[ext_resource type="Texture2D" uid="uid://cosfg8web48we" path="res://hit1.png" id="5_2tjvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hegbh"]
+size = Vector2(51, 73)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn81p"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:up_direction")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Untitled08-14-202411-08-44/Sprite2D:self_modulate")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0ms5y"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:up_direction")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:process_mode")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Untitled08-14-202411-08-44/Sprite2D:self_modulate")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:self_modulate")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_coddy")
+
+[node name="marker1" type="Marker2D" parent="."]
+position = Vector2(-42, -87)
+
+[node name="Label" type="Label" parent="marker1"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+rotation = 1.57543
+shape = SubResource("RectangleShape2D_hegbh")
+
+[node name="Untitled08-14-202411-08-44" type="Sprite2D" parent="."]
+position = Vector2(6, 5)
+rotation = 1.56535
+scale = Vector2(4.25, 4.25)
+texture = ExtResource("1_by07c")
+
+[node name="Sprite2D" type="Sprite2D" parent="Untitled08-14-202411-08-44"]
+position = Vector2(-0.962947, 3.99481)
+rotation = -1.5744
+texture = ExtResource("3_yenjr")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="joystick" parent="ui" instance=ExtResource("2_c2hyk")]
+position = Vector2(121, 512)
+
+[node name="Control" type="Control" parent="ui"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -321.5
+offset_bottom = 321.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="ui/Control"]
+position = Vector2(91, 493)
+texture_normal = ExtResource("4_wbqna")
+texture_pressed = ExtResource("5_2tjvx")
+action = "leftbutton"
+
+[node name="Button" type="Button" parent="ui/Control"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 1.5
+offset_right = 199.0
+offset_bottom = 32.5
+text = "disconnect"
+
+[node name="player_input" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_tn81p")
+script = ExtResource("4_vesqn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.0401692
+position_smoothing_enabled = true
+
+[node name="serversyn" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0ms5y")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(70, 0)
+
+[connection signal="pressed" from="ui/Control/Button" to="." method="_on_button_pressed"]

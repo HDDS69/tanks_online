@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://dp82ydlqfj7js"]
+
+[ext_resource type="Script" path="res://player1.gd" id="1_aeacr"]
+[ext_resource type="Script" path="res://player12.gd" id="1_e74ag"]
+[ext_resource type="Texture2D" uid="uid://ci5l1c40bw61p" path="res://Untitled 08-14-2024 11-08-44.png" id="2_lywmd"]
+[ext_resource type="Texture2D" uid="uid://olqv7jwiby6w" path="res://Sprite-0002.jpg" id="3_75xut"]
+[ext_resource type="PackedScene" uid="uid://di33echt7hdsm" path="res://joystick.tscn" id="4_4u7w3"]
+[ext_resource type="Texture2D" uid="uid://ns0a5q1nw74x" path="res://hit0.png" id="5_i45yr"]
+[ext_resource type="Texture2D" uid="uid://cosfg8web48we" path="res://hit1.png" id="6_wihpx"]
+[ext_resource type="Script" path="res://player_input.gd" id="7_qok23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hegbh"]
+size = Vector2(51, 73)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn81p"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:up_direction")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Untitled08-14-202411-08-44/Sprite2D:self_modulate")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("marker1/Label:text")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0ms5y"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:up_direction")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:process_mode")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Untitled08-14-202411-08-44/Sprite2D:self_modulate")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:self_modulate")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("marker1/Label:text")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_e74ag")
+
+[node name="marker1" type="Marker2D" parent="."]
+position = Vector2(0, -87)
+
+[node name="Label" type="Label" parent="marker1"]
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 10.0
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_aeacr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-1.5, 0.5)
+rotation = 1.57543
+shape = SubResource("RectangleShape2D_hegbh")
+
+[node name="Untitled08-14-202411-08-44" type="Sprite2D" parent="player"]
+position = Vector2(6, 5)
+rotation = 1.56535
+scale = Vector2(4.25, 4.25)
+texture = ExtResource("2_lywmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/Untitled08-14-202411-08-44"]
+position = Vector2(-0.962947, 3.99481)
+rotation = -1.5744
+texture = ExtResource("3_75xut")
+
+[node name="ui" type="CanvasLayer" parent="player"]
+
+[node name="joystick" parent="player/ui" instance=ExtResource("4_4u7w3")]
+position = Vector2(121, 512)
+
+[node name="Control" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -321.5
+offset_bottom = 321.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="player/ui/Control"]
+position = Vector2(91, 493)
+texture_normal = ExtResource("5_i45yr")
+texture_pressed = ExtResource("6_wihpx")
+action = "leftbutton"
+
+[node name="Button" type="Button" parent="player/ui/Control"]
+visible = false
+layout_mode = 0
+offset_left = 107.0
+offset_top = 1.5
+offset_right = 199.0
+offset_bottom = 32.5
+text = "disconnect"
+
+[node name="player_input" type="MultiplayerSynchronizer" parent="player"]
+replication_config = SubResource("SceneReplicationConfig_tn81p")
+script = ExtResource("7_qok23")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+rotation = 0.0401692
+position_smoothing_enabled = true
+
+[node name="serversyn" type="MultiplayerSynchronizer" parent="player"]
+replication_config = SubResource("SceneReplicationConfig_0ms5y")
+
+[node name="Marker2D" type="Marker2D" parent="player"]
+position = Vector2(70, 0)
+
+[node name="marker" type="Marker2D" parent="player"]
+
+[connection signal="pressed" from="player/ui/Control/Button" to="player" method="_on_button_pressed"]

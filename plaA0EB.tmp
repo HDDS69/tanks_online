@@ -1,0 +1,333 @@
+[gd_scene load_steps=26 format=3 uid="uid://dp82ydlqfj7js"]
+
+[ext_resource type="Script" path="res://player1.gd" id="1_gv026"]
+[ext_resource type="Texture2D" uid="uid://v0ssd3cr8wwn" path="res://ельцин.png" id="2_7vscr"]
+[ext_resource type="Texture2D" uid="uid://6cw6eb5rgolw" path="res://Untitled 08-14-2024 11-08-44 — копия.png" id="2_jietb"]
+[ext_resource type="Texture2D" uid="uid://olqv7jwiby6w" path="res://Sprite-0002.jpg" id="3_75xut"]
+[ext_resource type="Texture2D" uid="uid://3p73wf2iam0a" path="res://tank.png" id="3_vm0j7"]
+[ext_resource type="PackedScene" uid="uid://di33echt7hdsm" path="res://joystick.tscn" id="4_4u7w3"]
+[ext_resource type="Texture2D" uid="uid://ns0a5q1nw74x" path="res://hit0.png" id="5_i45yr"]
+[ext_resource type="Texture2D" uid="uid://cosfg8web48we" path="res://hit1.png" id="6_wihpx"]
+[ext_resource type="Texture2D" uid="uid://cebupimq1hu0w" path="res://cat.png" id="7_m8438"]
+[ext_resource type="Script" path="res://player_input.gd" id="7_qok23"]
+[ext_resource type="AudioStream" uid="uid://c68mtwc4uc57t" path="res://Админ-Хуесос_(Elmanana.ru).mp3" id="11_yxwo2"]
+[ext_resource type="AudioStream" uid="uid://c3tmock0oysdl" path="res://14402638_tank-firin.mp3" id="12_42bxm"]
+[ext_resource type="AudioStream" uid="uid://ld4jw2ijhx8o" path="res://tracks_rattle_slow_01.mp3" id="12_j0jpj"]
+[ext_resource type="AudioStream" uid="uid://bf27xah31so7x" path="res://538204e5eeffe67.mp3" id="13_rkb7f"]
+
+[sub_resource type="GDScript" id="GDScript_vdw5q"]
+script/source = "extends Node2D
+var SPEED = 300.0
+@onready var input = $player_input
+@export var player := 1 :
+	set(id):
+		player = id
+		# Give authority over the player input to the appropriate peer.
+		$player_input.set_multiplayer_authority(id)
+func _ready():
+	# Set the camera as current if we are this player.
+	if player == multiplayer.get_unique_id():
+		$player/Camera2D.make_current() #= true
+		$player/AudioListener2D.make_current()
+		
+@rpc(\"any_peer\", \"reliable\",\"call_local\")
+func death():
+	$player/death.playing = true
+	queue_free()
+
+@rpc(\"any_peer\", \"reliable\",\"call_local\")
+func play_music():
+	$player/admin_xuesos.playing = !$player/admin_xuesos.playing
+
+func _on_button_2_pressed() -> void:
+	play_music.rpc()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hegbh"]
+size = Vector2(51, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piadg"]
+atlas = ExtResource("3_vm0j7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3xm0"]
+atlas = ExtResource("3_vm0j7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c30li"]
+atlas = ExtResource("3_vm0j7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uwur"]
+atlas = ExtResource("3_vm0j7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efs6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piadg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3xm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c30li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uwur")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do8qa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3x8a"]
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn81p"]
+properties/0/path = NodePath("../marker1/Label:text")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("../player:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("../marker1:position")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("../player:position")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("../player/Marker2D:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("../player/Cat:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("../player/Ельцин:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("../player/Untitled08-14-202411-08-44:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("../player:scale")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0ms5y"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+properties/1/path = NodePath("player:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("marker1:position")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("player/Untitled08-14-202411-08-44/Sprite2D:self_modulate")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("marker1/Label:text")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("player:position")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath("player:velocity")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("player/Marker2D:rotation")
+properties/7/spawn = true
+properties/7/replication_mode = 2
+properties/8/path = NodePath("player/Cat:visible")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("player/Ельцин:visible")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("player/Untitled08-14-202411-08-44:visible")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_vdw5q")
+metadata/_edit_horizontal_guides_ = [1399.0]
+
+[node name="marker1" type="Marker2D" parent="."]
+position = Vector2(0, -87)
+
+[node name="Label" type="RichTextLabel" parent="marker1"]
+offset_left = -65.0
+offset_right = 107.0
+offset_bottom = 40.0
+bbcode_enabled = true
+fit_content = true
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_gv026")
+
+[node name="Untitled08-14-202411-08-44—Копия" type="Sprite2D" parent="player"]
+position = Vector2(6, 6)
+rotation = 1.57562
+scale = Vector2(4.25249, 3.85959)
+texture = ExtResource("2_jietb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-1.5, 0.5)
+rotation = 1.57543
+shape = SubResource("RectangleShape2D_hegbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(6, 5)
+rotation = 1.56992
+scale = Vector2(4.25203, 4.25203)
+sprite_frames = SubResource("SpriteFrames_efs6t")
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="player/AnimatedSprite2D"]
+position = Vector2(-0.944225, 3.99726)
+rotation = -1.57897
+scale = Vector2(0.999524, 0.999524)
+texture = ExtResource("3_75xut")
+
+[node name="ui" type="CanvasLayer" parent="player"]
+
+[node name="Control2" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_right = 522.0
+grow_vertical = 0
+
+[node name="joystick" parent="player/ui/Control2" instance=ExtResource("4_4u7w3")]
+position = Vector2(183, 455)
+
+[node name="Control" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -643.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="player/ui/Control"]
+position = Vector2(214, 424)
+scale = Vector2(1.70833, 1.72396)
+texture_normal = ExtResource("5_i45yr")
+texture_pressed = ExtResource("6_wihpx")
+action = "leftbutton"
+
+[node name="Control3" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_bottom = 164.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="player/ui/Control3"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 158.0
+offset_bottom = 78.0
+text = "reset"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="player/ui/Control3/Button"]
+position = Vector2(86, 34)
+scale = Vector2(-8.50857, 3.52034)
+shape = SubResource("RectangleShape2D_do8qa")
+action = "ui_home"
+
+[node name="Button2" type="Button" parent="player/ui/Control3"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 88.0
+offset_right = 160.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 25
+text = "админ хуесос"
+
+[node name="Control4" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 453.0
+offset_bottom = 233.0
+
+[node name="Label" type="Label" parent="player/ui/Control4"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 305.0
+offset_bottom = 174.0
+label_settings = SubResource("LabelSettings_v3x8a")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+rotation = 0.0401692
+position_smoothing_enabled = true
+
+[node name="Marker2D" type="Marker2D" parent="player"]
+position = Vector2(70, 0)
+
+[node name="marker" type="Marker2D" parent="player"]
+
+[node name="Cat" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(2.38419e-07, 9.53674e-07)
+rotation = 1.54635
+scale = Vector2(1.72544, 2.02457)
+texture = ExtResource("7_m8438")
+
+[node name="Ельцин" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(-2.86102e-06, -22)
+scale = Vector2(0.118408, 0.127686)
+texture = ExtResource("2_7vscr")
+
+[node name="fire" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("12_42bxm")
+max_distance = 500.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="player"]
+
+[node name="admin_xuesos" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("11_yxwo2")
+max_distance = 500.0
+panning_strength = 2.8
+
+[node name="drive" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("12_j0jpj")
+max_distance = 500.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("13_rkb7f")
+volume_db = 12.0
+max_distance = 1000.0
+
+[node name="player_input" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+delta_interval = 0.05
+replication_config = SubResource("SceneReplicationConfig_tn81p")
+script = ExtResource("7_qok23")
+
+[node name="serversyn" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0ms5y")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://bullet.tscn")
+spawn_path = NodePath("../bullet")
+spawn_limit = 1000
+
+[node name="bullet" type="Node2D" parent="."]
+
+[connection signal="pressed" from="player/ui/Control3/Button2" to="." method="_on_button_2_pressed"]

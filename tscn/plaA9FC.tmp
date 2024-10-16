@@ -1,0 +1,739 @@
+[gd_scene load_steps=89 format=3 uid="uid://dp82ydlqfj7js"]
+
+[ext_resource type="Texture2D" uid="uid://dik2d4nf8shcm" path="res://texture/sovok.png" id="1_b6ty8"]
+[ext_resource type="Script" path="res://script/player1.gd" id="1_gv026"]
+[ext_resource type="Texture2D" uid="uid://bibqggsu2iv2s" path="res://texture/tank_player_elicin.png" id="2_1iqm6"]
+[ext_resource type="Texture2D" uid="uid://v0ssd3cr8wwn" path="res://texture/ельцин.png" id="2_7vscr"]
+[ext_resource type="Texture2D" uid="uid://dg3w4rxc81fy" path="res://texture/boom.png" id="3_8sq6m"]
+[ext_resource type="Texture2D" uid="uid://olqv7jwiby6w" path="res://texture/Sprite-0002.jpg" id="3_75xut"]
+[ext_resource type="Texture2D" uid="uid://3p73wf2iam0a" path="res://texture/tank.png" id="3_77td2"]
+[ext_resource type="Texture2D" uid="uid://c54v2viv33vji" path="res://texture/nevergiveyouup/give1.png" id="4_vxpxy"]
+[ext_resource type="Texture2D" uid="uid://ns0a5q1nw74x" path="res://texture/hit0.png" id="5_i45yr"]
+[ext_resource type="Texture2D" uid="uid://bnu1x2wtukua6" path="res://texture/nevergiveyouup/give2.png" id="5_ix0tf"]
+[ext_resource type="Script" path="res://script/joystick.gd" id="6_t4top"]
+[ext_resource type="Texture2D" uid="uid://bohla6fwfnfi8" path="res://texture/nevergiveyouup/give3.png" id="6_t8pmu"]
+[ext_resource type="Texture2D" uid="uid://cosfg8web48we" path="res://texture/hit1.png" id="6_wihpx"]
+[ext_resource type="Texture2D" uid="uid://bf7df5ridvjem" path="res://texture/nevergiveyouup/give4.png" id="7_30i8p"]
+[ext_resource type="Texture2D" uid="uid://hgj2lummvf1b" path="res://texture/stick.png" id="7_l562c"]
+[ext_resource type="Texture2D" uid="uid://cebupimq1hu0w" path="res://texture/cat.png" id="7_m8438"]
+[ext_resource type="Script" path="res://script/player_input.gd" id="7_qok23"]
+[ext_resource type="Texture2D" uid="uid://kvj0ud0nxo6e" path="res://texture/nevergiveyouup/give5.png" id="8_cuyyy"]
+[ext_resource type="Texture2D" uid="uid://jwb32vb6hwvw" path="res://texture/nevergiveyouup/give6.png" id="9_7qygc"]
+[ext_resource type="Texture2D" uid="uid://bldd7jolyfr0o" path="res://texture/nevergiveyouup/give7.png" id="10_omke5"]
+[ext_resource type="Texture2D" uid="uid://bvjvosd10vve5" path="res://texture/boom_buttom1.png" id="10_rwfya"]
+[ext_resource type="Texture2D" uid="uid://ty3ex21tj0c2" path="res://texture/nevergiveyouup/give8.png" id="11_0mdji"]
+[ext_resource type="Texture2D" uid="uid://rmlh2y5bfj47" path="res://texture/boom_buttom2.png" id="11_bb75w"]
+[ext_resource type="AudioStream" uid="uid://c68mtwc4uc57t" path="res://music/Админ-Хуесоc.mp3" id="11_yxwo2"]
+[ext_resource type="AudioStream" uid="uid://b8gj2ekm3ukp7" path="res://music/tank_fire.mp3" id="12_42bxm"]
+[ext_resource type="AudioStream" uid="uid://ld4jw2ijhx8o" path="res://music/tracks_rattle_slow_01.mp3" id="12_j0jpj"]
+[ext_resource type="Texture2D" uid="uid://ciqaa4xy88iod" path="res://texture/nevergiveyouup/give9.png" id="12_qweqw"]
+[ext_resource type="Texture2D" uid="uid://i332etjssy55" path="res://texture/nevergiveyouup/give10.png" id="13_mt4qf"]
+[ext_resource type="AudioStream" uid="uid://dowr7kumkw4d4" path="res://music/boom.mp3" id="13_rkb7f"]
+[ext_resource type="Texture2D" uid="uid://clivccw14dkf" path="res://texture/nevergiveyouup/give11.png" id="14_u704y"]
+[ext_resource type="Texture2D" uid="uid://cneaw6pl36t5o" path="res://texture/nevergiveyouup/give12.png" id="15_htg17"]
+[ext_resource type="Texture2D" uid="uid://xyod10616rml" path="res://texture/nevergiveyouup/give13.png" id="16_t25f0"]
+[ext_resource type="Texture2D" uid="uid://bmmwa32j3r6xb" path="res://texture/nevergiveyouup/give14.png" id="17_yj347"]
+[ext_resource type="Texture2D" uid="uid://dc13vcd12c6ky" path="res://texture/nevergiveyouup/give15.png" id="18_sop1o"]
+[ext_resource type="Texture2D" uid="uid://gbp18bx5al1p" path="res://texture/nevergiveyouup/give16.png" id="19_j1y63"]
+[ext_resource type="Texture2D" uid="uid://3s6fxy5ci7op" path="res://texture/sugar_sloika.png" id="19_rt6b0"]
+[ext_resource type="Texture2D" uid="uid://d1ohwqcuiepqx" path="res://texture/dandar.png" id="19_yr1gu"]
+[ext_resource type="Texture2D" uid="uid://ckyiij8kx7jo0" path="res://texture/nevergiveyouup/give17.png" id="20_ynbcw"]
+[ext_resource type="Texture2D" uid="uid://05m41anfx8dl" path="res://texture/nevergiveyouup/give18.png" id="21_4kvdj"]
+[ext_resource type="Texture2D" uid="uid://cr62gpogxrx1i" path="res://texture/nevergiveyouup/give19.png" id="22_2xdxl"]
+[ext_resource type="Texture2D" uid="uid://xuyo83ounhbn" path="res://texture/nevergiveyouup/give20.png" id="23_d1yls"]
+[ext_resource type="Texture2D" uid="uid://bdmhl6vej4py7" path="res://texture/nevergiveyouup/give21.png" id="24_4qnyv"]
+[ext_resource type="Texture2D" uid="uid://oa0rf82c7p4e" path="res://texture/nevergiveyouup/give22.png" id="25_cnjdp"]
+[ext_resource type="Texture2D" uid="uid://dyou3e8qnl4rr" path="res://texture/nevergiveyouup/give23.png" id="26_jfs84"]
+[ext_resource type="Texture2D" uid="uid://cj2u332w5r747" path="res://texture/nevergiveyouup/give24.png" id="27_w2cwa"]
+[ext_resource type="Texture2D" uid="uid://eb862gjni0oo" path="res://texture/nevergiveyouup/give25.png" id="28_v7ag4"]
+[ext_resource type="Texture2D" uid="uid://ncmujkus08fg" path="res://texture/nevergiveyouup/give26.png" id="29_w1r3g"]
+[ext_resource type="Texture2D" uid="uid://b5taektxwwuy8" path="res://texture/nevergiveyouup/give27.png" id="30_p1124"]
+[ext_resource type="Texture2D" uid="uid://c7iiqeuson6yt" path="res://texture/nevergiveyouup/give28.png" id="31_l1isy"]
+[ext_resource type="Texture2D" uid="uid://c5pfd7woyfxgb" path="res://texture/nevergiveyouup/give29.png" id="32_7k4a3"]
+[ext_resource type="Texture2D" uid="uid://6f1ytyjwf8uj" path="res://texture/nevergiveyouup/give30.png" id="33_00p0i"]
+[ext_resource type="Texture2D" uid="uid://demk6a2deu88l" path="res://texture/nevergiveyouup/give31.png" id="34_q5cf5"]
+[ext_resource type="Texture2D" uid="uid://w8qd7qf71m6v" path="res://texture/nevergiveyouup/give32.png" id="35_2aw2d"]
+[ext_resource type="Texture2D" uid="uid://cg3wosq5a8t4a" path="res://texture/nevergiveyouup/give33.png" id="36_u610j"]
+[ext_resource type="Texture2D" uid="uid://duqf0to0gip4a" path="res://texture/nevergiveyouup/give34.png" id="37_d4pje"]
+[ext_resource type="Texture2D" uid="uid://dclugh4vr40un" path="res://texture/nevergiveyouup/give35.png" id="38_822s7"]
+[ext_resource type="Texture2D" uid="uid://bh81ye4el34p1" path="res://texture/nevergiveyouup/give36.png" id="39_divfi"]
+[ext_resource type="Texture2D" uid="uid://d3wb2pjucmvni" path="res://texture/nevergiveyouup/give37.png" id="40_yqxlk"]
+[ext_resource type="Texture2D" uid="uid://3hrffskfr25u" path="res://texture/nevergiveyouup/give38.png" id="41_31t3g"]
+[ext_resource type="Texture2D" uid="uid://buthhpri1flnk" path="res://texture/nevergiveyouup/give39.png" id="42_c2vhp"]
+[ext_resource type="Texture2D" uid="uid://nbtux5p0iyll" path="res://texture/nevergiveyouup/give40.png" id="43_jic7x"]
+
+[sub_resource type="GDScript" id="GDScript_vdw5q"]
+script/source = "extends Node2D
+var SPEED = 300.0
+@onready var input = $player_input
+@export var player := 1 :
+	set(id):
+		player = id
+		# Give authority over the player input to the appropriate peer.
+		$player_input.set_multiplayer_authority(id)
+func _ready():
+	# Set the camera as current if we are this player.
+	if player == multiplayer.get_unique_id():
+		$player/Camera2D.make_current()
+		$player/AudioListener2D.make_current()
+		if Autoload.mute:
+				AudioServer.set_bus_mute(0, true)  # Отключает шину master
+
+		
+@rpc(\"any_peer\", \"reliable\",\"call_local\")
+func death():
+	$player/boom.play(\"boom\")
+	await $player/boom.animation_finished
+	queue_free()
+	
+
+
+@rpc(\"any_peer\", \"reliable\",\"call_local\")
+func play_music():
+	$player/admin_xuesos.playing = !$player/admin_xuesos.playing
+
+func _on_button_2_pressed() -> void:
+	play_music.rpc()
+
+
+func _on_exit_pressed() -> void:
+	exit()
+
+@rpc(\"any_peer\", \"reliable\",\"call_local\")
+func exit():
+	#get_tree().reload_current_scene()
+	#if multiplayer.is_connected_to_server():
+	#	multiplayer.disconnect_from_server()
+	get_tree().change_scene_to_file(\"res://tscn/multiplay1er.tscn\")
+	#queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hegbh"]
+size = Vector2(51, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jevop"]
+atlas = ExtResource("3_77td2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ep5"]
+atlas = ExtResource("3_77td2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65o6m"]
+atlas = ExtResource("3_77td2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g5gp"]
+atlas = ExtResource("3_77td2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5dqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jevop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ep5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65o6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g5gp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs38e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vxpxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ix0tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t8pmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_30i8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cuyyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7qygc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_omke5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0mdji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qweqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mt4qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_u704y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_htg17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_t25f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yj347")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sop1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_j1y63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ynbcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4kvdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2xdxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_d1yls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_4qnyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cnjdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_jfs84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_w2cwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_v7ag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_w1r3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_p1124")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_l1isy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7k4a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_00p0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_q5cf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_2aw2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_u610j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_d4pje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_822s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_divfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_yqxlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_31t3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_c2vhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_jic7x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5yhv"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp081"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rbcl"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0iry"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fohul"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2agv"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4d2"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvnp1"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw5mf"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rxua"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bej4e"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udkgv"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr52v"]
+atlas = ExtResource("3_8sq6m")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hugb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5yhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp081")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rbcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0iry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fohul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2agv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj4d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvnp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw5mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rxua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bej4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr52v")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awmoh"]
+radius = 208.636
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do8qa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3x8a"]
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn81p"]
+properties/0/path = NodePath("../player:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("../marker1/Label:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("../marker1:position")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("../player:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("../player/AnimatedSprite2D/Sprite2D:self_modulate")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("../player/AnimatedSprite2D:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("../player/Ельцин:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("../player/Cat:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("../player:scale")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("../player/AnimatedSprite2D:frame")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("../mine:modulate")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("../mine:position")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("../player/SugarSloika:visible")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("../player/Dandar:visible")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("../player/AnimatedSprite2D/nevergiveyouup:visible")
+properties/14/spawn = true
+properties/14/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0ms5y"]
+properties/0/path = NodePath(".:player")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+properties/1/path = NodePath("player:position")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("marker1:position")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("player:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("marker1/Label:text")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("player/AnimatedSprite2D/Sprite2D:self_modulate")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("player/AnimatedSprite2D:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("player/Ельцин:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("player/Cat:visible")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("player:scale")
+properties/9/spawn = true
+properties/9/replication_mode = 2
+properties/10/path = NodePath("player/boom:frame")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("mine:modulate")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("player/SugarSloika:visible")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("player/Dandar:visible")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("player/AnimatedSprite2D/nevergiveyouup:visible")
+properties/14/spawn = true
+properties/14/replication_mode = 1
+properties/15/path = NodePath("player/AnimatedSprite2D/nevergiveyouup:frame")
+properties/15/spawn = true
+properties/15/replication_mode = 1
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_vdw5q")
+metadata/_edit_horizontal_guides_ = [1399.0]
+
+[node name="mine" type="Node2D" parent="."]
+
+[node name="bullet" type="Node2D" parent="."]
+
+[node name="marker1" type="Marker2D" parent="."]
+position = Vector2(0, -87)
+
+[node name="Label" type="RichTextLabel" parent="marker1"]
+offset_left = -65.0
+offset_right = 107.0
+offset_bottom = 40.0
+bbcode_enabled = true
+fit_content = true
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_gv026")
+
+[node name="TankPlayerElicin" type="Sprite2D" parent="player"]
+position = Vector2(6, 6)
+rotation = 1.57149
+scale = Vector2(4.31726, 4.48979)
+texture = ExtResource("2_1iqm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-1.5, 0.5)
+rotation = 1.57543
+shape = SubResource("RectangleShape2D_hegbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(6, 6)
+rotation = 1.57081
+scale = Vector2(4.31087, 4.31087)
+sprite_frames = SubResource("SpriteFrames_i5dqu")
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="player/AnimatedSprite2D"]
+position = Vector2(-0.965192, 4.10232)
+rotation = -1.57986
+scale = Vector2(1.02558, 1.02558)
+texture = ExtResource("3_75xut")
+
+[node name="nevergiveyouup" type="AnimatedSprite2D" parent="player/AnimatedSprite2D"]
+visible = false
+position = Vector2(-1.15984, 1.39185)
+rotation = -1.9908e-05
+scale = Vector2(0.040027, 0.040027)
+sprite_frames = SubResource("SpriteFrames_gs38e")
+
+[node name="boom" type="AnimatedSprite2D" parent="player"]
+modulate = Color(1, 0.32245, 0.115714, 1)
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(3.71875, 3.48438)
+sprite_frames = SubResource("SpriteFrames_8hugb")
+animation = &"boom"
+
+[node name="ui" type="CanvasLayer" parent="player"]
+
+[node name="Control2" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_right = 522.0
+grow_vertical = 0
+
+[node name="joystick" type="Area2D" parent="player/ui/Control2"]
+position = Vector2(184, 446)
+scale = Vector2(1.56, 1.63318)
+script = ExtResource("6_t4top")
+
+[node name="big" type="Sprite2D" parent="player/ui/Control2/joystick"]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_l562c")
+
+[node name="small" type="Sprite2D" parent="player/ui/Control2/joystick/big"]
+scale = Vector2(0.288, 0.296)
+texture = ExtResource("7_l562c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/ui/Control2/joystick"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_awmoh")
+one_way_collision_margin = 19.5
+
+[node name="Control" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -643.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="player/ui/Control"]
+position = Vector2(214, 424)
+scale = Vector2(1.70833, 1.72396)
+texture_normal = ExtResource("5_i45yr")
+texture_pressed = ExtResource("6_wihpx")
+action = "leftbutton"
+
+[node name="mine_button" type="TouchScreenButton" parent="player/ui/Control"]
+position = Vector2(34, 424)
+scale = Vector2(1.70833, 1.72396)
+texture_normal = ExtResource("10_rwfya")
+texture_pressed = ExtResource("11_bb75w")
+action = "rightbutton"
+
+[node name="Control3" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_bottom = 164.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="player/ui/Control3"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 158.0
+offset_bottom = 78.0
+text = "reset"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="player/ui/Control3/Button"]
+position = Vector2(86, 34)
+scale = Vector2(-8.50857, 3.52034)
+shape = SubResource("RectangleShape2D_do8qa")
+action = "ui_home"
+
+[node name="Button2" type="Button" parent="player/ui/Control3"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 164.0
+offset_right = 163.0
+offset_bottom = 221.0
+theme_override_font_sizes/font_size = 25
+text = "админ хуесос"
+
+[node name="exit" type="Button" parent="player/ui/Control3"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 87.0
+offset_right = 158.0
+offset_bottom = 150.0
+text = "exit"
+
+[node name="Control4" type="Control" parent="player/ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 453.0
+offset_bottom = 233.0
+
+[node name="Label" type="Label" parent="player/ui/Control4"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 305.0
+offset_bottom = 174.0
+label_settings = SubResource("LabelSettings_v3x8a")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+rotation = 0.0401692
+position_smoothing_enabled = true
+
+[node name="Marker2D" type="Marker2D" parent="player"]
+position = Vector2(47, 1)
+
+[node name="marker" type="Marker2D" parent="player"]
+
+[node name="Sovok" type="Sprite2D" parent="player"]
+position = Vector2(0, 28)
+scale = Vector2(1.73438, 1.79688)
+texture = ExtResource("1_b6ty8")
+
+[node name="Cat" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(2.38419e-07, 9.53674e-07)
+rotation = 1.54635
+scale = Vector2(1.72544, 2.02457)
+texture = ExtResource("7_m8438")
+
+[node name="Ельцин" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(-2.86102e-06, -22)
+scale = Vector2(0.118408, 0.127686)
+texture = ExtResource("2_7vscr")
+
+[node name="fire" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("12_42bxm")
+max_distance = 500.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="player"]
+
+[node name="admin_xuesos" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("11_yxwo2")
+max_distance = 500.0
+panning_strength = 2.8
+
+[node name="drive" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("12_j0jpj")
+max_distance = 500.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("13_rkb7f")
+volume_db = -3.848
+max_distance = 1000.0
+
+[node name="mine_spawner" type="Marker2D" parent="player"]
+position = Vector2(-69, 1)
+
+[node name="SugarSloika" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(-8, -22)
+scale = Vector2(0.0847732, 0.0947917)
+texture = ExtResource("19_rt6b0")
+
+[node name="Dandar" type="Sprite2D" parent="player"]
+visible = false
+position = Vector2(-11.6555, 1.93644)
+rotation = 1.57079
+scale = Vector2(0.0257633, 0.0343734)
+texture = ExtResource("19_yr1gu")
+
+[node name="player_input" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+delta_interval = 0.05
+replication_config = SubResource("SceneReplicationConfig_tn81p")
+script = ExtResource("7_qok23")
+
+[node name="serversyn" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0ms5y")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://tscn/bullet.tscn")
+spawn_path = NodePath("../bullet")
+spawn_limit = 1000
+
+[node name="mine_spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://tscn/mine.tscn")
+spawn_path = NodePath("../mine")
+spawn_limit = 100
+
+[connection signal="pressed" from="player/ui/Control3/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="player/ui/Control3/exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://buwn2cx22v6rk"]
+
+[ext_resource type="Script" path="res://Multiplayer.gd" id="1_qha6t"]
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_qha6t")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -752.0
+offset_bottom = -497.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.91713, 4.36758)
+
+[node name="Net" type="VBoxContainer" parent="ui"]
+layout_mode = 0
+offset_left = 3.77083
+offset_top = -0.91584
+offset_right = 1157.77
+offset_bottom = 647.084
+scale = Vector2(0.908023, 0.455286)
+
+[node name="Option" type="HBoxContainer" parent="ui/Net"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/Net/Option"]
+layout_mode = 2
+text = "direct"
+
+[node name="H1ost" type="Button" parent="ui/Net/Option"]
+layout_mode = 2
+text = "host"
+
+[node name="C1onnect" type="Button" parent="ui/Net/Option"]
+layout_mode = 2
+text = "connect"
+
+[node name="Remote" type="LineEdit" parent="ui/Net/Option"]
+layout_mode = 2
+placeholder_text = "ip сервера"
+expand_to_text_length = true
+
+[node name="level" type="Node" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://level.tscn")
+spawn_path = NodePath("../level")
+spawn_limit = 1
+
+[connection signal="pressed" from="ui/Net/Option/H1ost" to="." method="_on_h_1_ost_pressed"]
+[connection signal="pressed" from="ui/Net/Option/C1onnect" to="." method="_on_c_1_onnect_pressed"]

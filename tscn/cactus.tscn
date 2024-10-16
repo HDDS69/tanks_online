@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://co86tsqlgdmft"]
+
+[ext_resource type="Texture2D" uid="uid://bvboqf7a6xndq" path="res://texture/cactus.png" id="1_6rc7i"]
+[ext_resource type="Script" path="res://tscn/cactus.gd" id="1_tn415"]
+[ext_resource type="Texture2D" uid="uid://krmc3gncmcme" path="res://texture/boom_borel.png" id="3_kgdfr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khtb0"]
+size = Vector2(24, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vx2x"]
+size = Vector2(8, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mbwa1"]
+a = Vector2(-1, 0)
+b = Vector2(-23, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_es22v"]
+a = Vector2(12, 10)
+b = Vector2(-5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go0oc"]
+size = Vector2(26.2712, 33.6066)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ctw"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cwnm"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgol2"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4fe7"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdjx6"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rpoe"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w5tu"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yncv"]
+atlas = ExtResource("3_kgdfr")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1dvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ctw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cwnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgol2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4fe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdjx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rpoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w5tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yncv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fkwa4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(2.36, 2.44)
+script = ExtResource("1_tn415")
+
+[node name="Cactus_shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.301961)
+position = Vector2(4, -15)
+texture = ExtResource("1_6rc7i")
+
+[node name="Cactus" type="Sprite2D" parent="."]
+position = Vector2(3, -16)
+texture = ExtResource("1_6rc7i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, -25)
+shape = SubResource("RectangleShape2D_khtb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_7vx2x")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(14, -17)
+shape = SubResource("SegmentShape2D_mbwa1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -24)
+shape = SubResource("SegmentShape2D_es22v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.27119, -15.9836)
+shape = SubResource("RectangleShape2D_go0oc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 1, 0.0313726, 1)
+position = Vector2(1, -15)
+rotation = 0.749409
+scale = Vector2(1.0625, 1.0625)
+sprite_frames = SubResource("SpriteFrames_u1dvj")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fkwa4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://by04lcn40b60u"]
+
+[ext_resource type="Script" path="res://tscn/settings.gd" id="1_fpcb0"]
+[ext_resource type="Texture2D" uid="uid://bqkbgohjcxorv" path="res://texture/music_off.png" id="1_l7eb8"]
+[ext_resource type="Texture2D" uid="uid://bmij76q432nvh" path="res://texture/0.png" id="2_3du2t"]
+[ext_resource type="Texture2D" uid="uid://bsund7jc6bbor" path="res://texture/music_on.png" id="2_i3ga4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g22xg"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="setting" type="Node"]
+process_mode = 3
+script = ExtResource("1_fpcb0")
+
+[node name="settings" type="Control" parent="."]
+process_mode = 3
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1165.0
+offset_bottom = 648.0
+scale = Vector2(4, 4)
+
+[node name="0" type="Sprite2D" parent="settings"]
+position = Vector2(208.5, 143.5)
+scale = Vector2(0.518311, 0.518311)
+texture = ExtResource("2_3du2t")
+
+[node name="music_button" type="Button" parent="settings"]
+layout_mode = 0
+offset_left = 92.75
+offset_top = 9.25
+offset_right = 206.75
+offset_bottom = 111.25
+scale = Vector2(0.329497, 0.339123)
+
+[node name="MusicOff" type="Sprite2D" parent="settings"]
+visible = false
+position = Vector2(111.5, 25.5)
+scale = Vector2(1.14537, 1.17884)
+texture = ExtResource("1_l7eb8")
+
+[node name="MusicOn" type="Sprite2D" parent="settings"]
+position = Vector2(111.5, 25.25)
+scale = Vector2(1.15133, 1.18497)
+texture = ExtResource("2_i3ga4")
+
+[node name="settings" type="Label" parent="settings"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 31.0
+text = "settings :"
+label_settings = SubResource("LabelSettings_g22xg")
+
+[node name="exit_button" type="Button" parent="settings"]
+layout_mode = 0
+offset_left = 6.5
+offset_top = 127.5
+offset_right = 50.5
+offset_bottom = 157.5
+theme_override_font_sizes/font_size = 15
+text = "exit"
+
+[node name="control" type="CheckBox" parent="settings"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 55.0
+offset_right = 159.0
+offset_bottom = 86.0
+text = "   style control 1"
+
+[node name="control2" type="CheckBox" parent="settings"]
+layout_mode = 0
+offset_left = 10.5
+offset_top = 95.5
+offset_right = 160.5
+offset_bottom = 126.5
+text = "   style control 2"
+
+[connection signal="pressed" from="settings/music_button" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="settings/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="settings/control" to="." method="_on_control_toggled"]
+[connection signal="toggled" from="settings/control2" to="." method="_on_control_2_toggled"]

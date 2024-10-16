@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://c46hrofjre5js"]
+
+[ext_resource type="Texture2D" uid="uid://bet65k5yy16qi" path="res://texture/mirage.png" id="1_fd2f2"]
+[ext_resource type="Script" path="res://script/multiplayer.gd" id="1_u4hl7"]
+[ext_resource type="Texture2D" uid="uid://bfqjf738gmra7" path="res://texture/swadows.png" id="2_7xnuj"]
+[ext_resource type="Texture2D" uid="uid://bpuofdskso1fe" path="res://texture/plam.png" id="3_ur5uo"]
+[ext_resource type="Texture2D" uid="uid://c766by0c7wtth" path="res://texture/bg.png" id="5_7ys1p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6781i"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_u4hl7")
+
+[node name="bg" type="Node" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="bg"]
+position = Vector2(2558, 756.603)
+scale = Vector2(1.20965, 1.42519)
+texture = ExtResource("5_7ys1p")
+
+[node name="Bg3" type="Sprite2D" parent="bg"]
+position = Vector2(2571, 37)
+scale = Vector2(1.20965, 1.42519)
+texture = ExtResource("5_7ys1p")
+
+[node name="Bg4" type="Sprite2D" parent="bg"]
+position = Vector2(4105.02, 616)
+rotation = -1.57064
+scale = Vector2(1.4177, 1.21603)
+skew = 5.93662e-05
+texture = ExtResource("5_7ys1p")
+
+[node name="Mirage" type="Sprite2D" parent="bg"]
+position = Vector2(700, 370)
+scale = Vector2(0.985818, 0.987188)
+skew = 0.457727
+texture = ExtResource("1_fd2f2")
+
+[node name="Plam" type="Sprite2D" parent="bg"]
+position = Vector2(633.999, 346)
+scale = Vector2(1.02676, 0.992823)
+texture = ExtResource("3_ur5uo")
+
+[node name="Swadows" type="Sprite2D" parent="bg"]
+position = Vector2(640.999, 350)
+scale = Vector2(1.01493, 0.977778)
+texture = ExtResource("2_7xnuj")
+
+[node name="Bg2" type="Sprite2D" parent="bg"]
+position = Vector2(496, 1493)
+scale = Vector2(1.05804, 1.23459)
+texture = ExtResource("5_7ys1p")
+
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(3.46009, 4.05522)
+
+[node name="Connect" type="Button" parent="UI"]
+self_modulate = Color(0.91664, 0.91664, 0.91664, 1)
+layout_mode = 2
+offset_left = 125.141
+offset_top = 3.69894
+offset_right = 197.141
+offset_bottom = 34.6989
+text = "Connect"
+
+[node name="Host" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 71.6744
+offset_top = 4.19213
+offset_right = 115.674
+offset_bottom = 35.1921
+text = "Host"
+
+[node name="Remote" type="LineEdit" parent="UI"]
+layout_mode = 2
+offset_left = 4.62416
+offset_top = 77.9243
+offset_right = 196.624
+offset_bottom = 108.924
+size_flags_horizontal = 3
+text = "127.0.0.1"
+placeholder_text = "Remote Host"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Remote2" type="LineEdit" parent="UI"]
+layout_mode = 2
+offset_left = 5.49119
+offset_top = 43.1543
+offset_right = 197.491
+offset_bottom = 74.1543
+size_flags_horizontal = 3
+text = "nickname"
+placeholder_text = "write nikname"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 9.82633
+offset_top = 7.39787
+offset_right = 60.8263
+offset_bottom = 30.3979
+text = "Direct:"
+label_settings = SubResource("LabelSettings_6781i")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="UI"]
+layout_mode = 0
+offset_left = 5.20218
+offset_top = 114.174
+offset_right = 50.2022
+offset_bottom = 152.174
+color = Color(0.372489, 0.543153, 0.127511, 1)
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 55.7789
+offset_top = 117.873
+offset_right = 168.779
+offset_bottom = 148.873
+text = "random color"
+
+[node name="settings_button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 202.596
+offset_top = 3.45234
+offset_right = 297.596
+offset_bottom = 34.4523
+text = "settings"
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://tscn/level.tscn")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[node name="Level" type="Node" parent="."]
+
+[connection signal="pressed" from="UI/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="UI/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/settings_button" to="." method="_on_settings_pressed"]

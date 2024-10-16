@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=3 uid="uid://c46hrofjre5js"]
+
+[ext_resource type="Texture2D" uid="uid://bet65k5yy16qi" path="res://texture/mirage.png" id="1_fd2f2"]
+[ext_resource type="Script" path="res://script/multiplayer.gd" id="1_u4hl7"]
+[ext_resource type="Texture2D" uid="uid://bfqjf738gmra7" path="res://texture/swadows.png" id="2_7xnuj"]
+[ext_resource type="Texture2D" uid="uid://bpuofdskso1fe" path="res://texture/plam.png" id="3_ur5uo"]
+[ext_resource type="Texture2D" uid="uid://c766by0c7wtth" path="res://texture/bg.png" id="5_7ys1p"]
+[ext_resource type="Texture2D" uid="uid://bsund7jc6bbor" path="res://texture/music_on.png" id="6_deino"]
+[ext_resource type="Texture2D" uid="uid://bqkbgohjcxorv" path="res://texture/music_off.png" id="7_5mlxy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6781i"]
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_u4hl7")
+
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(3.46009, 4.05522)
+
+[node name="Mirage" type="Sprite2D" parent="UI"]
+position = Vector2(194.504, 86.5551)
+scale = Vector2(0.284911, 0.25216)
+skew = 0.523599
+texture = ExtResource("1_fd2f2")
+
+[node name="Plam" type="Sprite2D" parent="UI"]
+position = Vector2(183.232, 85.3221)
+scale = Vector2(0.296745, 0.244826)
+texture = ExtResource("3_ur5uo")
+
+[node name="Connect" type="Button" parent="UI"]
+self_modulate = Color(0.91664, 0.91664, 0.91664, 1)
+layout_mode = 2
+offset_left = 125.141
+offset_top = 3.69894
+offset_right = 197.141
+offset_bottom = 34.6989
+text = "Connect"
+
+[node name="Host" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 71.6744
+offset_top = 4.19213
+offset_right = 115.674
+offset_bottom = 35.1921
+text = "Host"
+
+[node name="Remote" type="LineEdit" parent="UI"]
+layout_mode = 2
+offset_left = 4.62416
+offset_top = 77.9243
+offset_right = 196.624
+offset_bottom = 108.924
+size_flags_horizontal = 3
+text = "127.0.0.1"
+placeholder_text = "Remote Host"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Remote2" type="LineEdit" parent="UI"]
+layout_mode = 2
+offset_left = 5.49119
+offset_top = 43.1543
+offset_right = 197.491
+offset_bottom = 74.1543
+size_flags_horizontal = 3
+text = "nickname"
+placeholder_text = "write nikname"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 9.82633
+offset_top = 7.39787
+offset_right = 60.8263
+offset_bottom = 30.3979
+text = "Direct:"
+label_settings = SubResource("LabelSettings_6781i")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="UI"]
+layout_mode = 0
+offset_left = 5.20218
+offset_top = 114.174
+offset_right = 50.2022
+offset_bottom = 152.174
+color = Color(0.372489, 0.543153, 0.127511, 1)
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 55.7789
+offset_top = 117.873
+offset_right = 168.779
+offset_bottom = 148.873
+text = "random color"
+
+[node name="Swadows" type="Sprite2D" parent="UI"]
+position = Vector2(185.255, 86.3085)
+scale = Vector2(0.293325, 0.241116)
+texture = ExtResource("2_7xnuj")
+
+[node name="Bg" type="Sprite2D" parent="UI"]
+position = Vector2(727.149, 155.602)
+scale = Vector2(0.3496, 0.348067)
+texture = ExtResource("5_7ys1p")
+
+[node name="Bg2" type="Sprite2D" parent="UI"]
+position = Vector2(143.349, 368.167)
+scale = Vector2(0.305784, 0.304444)
+texture = ExtResource("5_7ys1p")
+
+[node name="buttons" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 144.0
+offset_top = 2.0
+offset_right = 244.0
+offset_bottom = 105.0
+
+[node name="music_button" type="Button" parent="UI/buttons"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 2.0
+offset_right = 175.0
+offset_bottom = 105.0
+scale = Vector2(0.329497, 0.339123)
+action_mode = 0
+
+[node name="MusicOff" type="Sprite2D" parent="UI/buttons"]
+visible = false
+position = Vector2(78.2755, 19.0447)
+scale = Vector2(1.19957, 1.23462)
+texture = ExtResource("7_5mlxy")
+
+[node name="MusicOn" type="Sprite2D" parent="UI/buttons"]
+position = Vector2(78.3578, 18.6208)
+scale = Vector2(1.14294, 1.17633)
+texture = ExtResource("6_deino")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://tscn/level.tscn")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[connection signal="pressed" from="UI/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="UI/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/buttons/music_button" to="." method="_on_music_button_pressed"]

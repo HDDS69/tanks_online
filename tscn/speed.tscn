@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmici5cm1b318"]
+
+[ext_resource type="Script" path="res://script/speed.gd" id="1_0wtua"]
+[ext_resource type="Texture2D" uid="uid://bw75s0jmk4865" path="res://texture/speed.png" id="2_3a4qo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jidmq"]
+size = Vector2(52, 50)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2mxea"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_0wtua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_jidmq")
+
+[node name="Sprite-000112" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.298039)
+position = Vector2(4, 2)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("2_3a4qo")
+
+[node name="Sprite-000113" type="Sprite2D" parent="."]
+position = Vector2(1, -2.27374e-13)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("2_3a4qo")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2mxea")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

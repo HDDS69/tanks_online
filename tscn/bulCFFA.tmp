@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp3tvmretld0i"]
+
+[ext_resource type="Script" path="res://script/bullet.gd" id="1_4cu72"]
+[ext_resource type="Texture2D" uid="uid://lx1380vmrmhj" path="res://texture/bullet.png" id="1_kqdgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylsau"]
+size = Vector2(34, 10)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0pns0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Bullet:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("CollisionShape2D:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_4cu72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17, 5)
+shape = SubResource("RectangleShape2D_ylsau")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+position = Vector2(17, 4.90625)
+scale = Vector2(5.75, 3.97656)
+texture = ExtResource("1_kqdgi")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0pns0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

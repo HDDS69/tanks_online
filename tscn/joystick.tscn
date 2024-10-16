@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://di33echt7hdsm"]
+
+[ext_resource type="Script" path="res://script/joystick.gd" id="1_nv4v6"]
+[ext_resource type="Texture2D" uid="uid://hgj2lummvf1b" path="res://texture/stick.png" id="2_7vm64"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awmoh"]
+radius = 208.636
+
+[node name="joystick" type="Area2D"]
+scale = Vector2(1.56, 1.63318)
+script = ExtResource("1_nv4v6")
+
+[node name="big" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7vm64")
+
+[node name="small" type="Sprite2D" parent="big"]
+scale = Vector2(0.288, 0.296)
+texture = ExtResource("2_7vm64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_awmoh")
+one_way_collision_margin = 19.5

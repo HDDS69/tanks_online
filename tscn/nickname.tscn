@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjr3jkrhtdwx"]
+
+[ext_resource type="Script" path="res://nickname.gd" id="1_taf7s"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_27aqe"]
+properties/0/path = NodePath("RichTextLabel:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_taf7s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 144.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "админ[wave] хуесос"
+fit_content = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_27aqe")
