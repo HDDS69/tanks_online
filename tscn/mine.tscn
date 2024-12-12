@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mdbu1awvwu4c"]
+[gd_scene load_steps=25 format=3 uid="uid://mdbu1awvwu4c"]
 
 [ext_resource type="Texture2D" uid="uid://b08wocjg4i8e8" path="res://texture/mine.png" id="1_7nx72"]
 [ext_resource type="Script" path="res://script/mine.gd" id="1_fjcjf"]
@@ -119,6 +119,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h3xlp"]
 radius = 30.7983
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n4ps8"]
+polygon = PackedVector2Array(-5.67141, -8.50712, 6.48162, -8.50712, 8.50712, -6.48162, 8.50712, 6.48162, 6.48162, 8.50712, -6.07652, 8.50712, -7.69692, 6.48162, -7.69692, -6.48162)
+
 [node name="mine" type="Area2D"]
 scale = Vector2(2.46852, 2.46852)
 script = ExtResource("1_fjcjf")
@@ -156,6 +159,9 @@ shape = SubResource("CircleShape2D_h3xlp")
 stream = ExtResource("6_g6vea")
 volume_db = -8.714
 pitch_scale = 2.46
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_n4ps8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
