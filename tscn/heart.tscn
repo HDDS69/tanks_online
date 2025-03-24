@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnowekhgnht43"]
 
-[ext_resource type="Script" path="res://script/heart.gd" id="1_b6joa"]
+[ext_resource type="Script" uid="uid://dxd6mhitxx1n4" path="res://script/heart.gd" id="1_b6joa"]
 [ext_resource type="Texture2D" uid="uid://dref8aanbn6v" path="res://texture/heart.png" id="1_qduxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i38b4"]

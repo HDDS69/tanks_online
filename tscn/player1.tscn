@@ -1,7 +1,7 @@
 [gd_scene load_steps=88 format=3 uid="uid://dp82ydlqfj7js"]
 
 [ext_resource type="Texture2D" uid="uid://dik2d4nf8shcm" path="res://texture/sovok.png" id="1_b6ty8"]
-[ext_resource type="Script" path="res://script/player1.gd" id="1_gv026"]
+[ext_resource type="Script" uid="uid://mn1m8ly817wf" path="res://script/player1.gd" id="1_gv026"]
 [ext_resource type="Texture2D" uid="uid://bibqggsu2iv2s" path="res://texture/tank_player_elicin.png" id="2_1iqm6"]
 [ext_resource type="Texture2D" uid="uid://e8mw6f1ptp2r" path="res://texture/tank_player.png" id="2_4ibnf"]
 [ext_resource type="Texture2D" uid="uid://v0ssd3cr8wwn" path="res://texture/ельцин.png" id="2_7vscr"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cosfg8web48we" path="res://texture/hit1.png" id="6_wihpx"]
 [ext_resource type="Texture2D" uid="uid://bf7df5ridvjem" path="res://texture/nevergiveyouup/give4.png" id="7_30i8p"]
 [ext_resource type="Texture2D" uid="uid://cebupimq1hu0w" path="res://texture/cat.png" id="7_m8438"]
-[ext_resource type="Script" path="res://script/player_input.gd" id="7_qok23"]
+[ext_resource type="Script" uid="uid://mkem60dln52y" path="res://script/player_input.gd" id="7_qok23"]
 [ext_resource type="Texture2D" uid="uid://kvj0ud0nxo6e" path="res://texture/nevergiveyouup/give5.png" id="8_cuyyy"]
 [ext_resource type="Texture2D" uid="uid://jwb32vb6hwvw" path="res://texture/nevergiveyouup/give6.png" id="9_7qygc"]
 [ext_resource type="Texture2D" uid="uid://bldd7jolyfr0o" path="res://texture/nevergiveyouup/give7.png" id="10_omke5"]
@@ -720,14 +720,16 @@ script = ExtResource("7_qok23")
 replication_config = SubResource("SceneReplicationConfig_0ms5y")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://tscn/bullet.tscn")
+_spawnable_scenes = PackedStringArray("uid://dp3tvmretld0i")
 spawn_path = NodePath("../bullet")
 spawn_limit = 1000
 
 [node name="mine_spawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://tscn/mine.tscn")
+_spawnable_scenes = PackedStringArray("uid://mdbu1awvwu4c")
 spawn_path = NodePath("../mine")
 spawn_limit = 100
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="player/ui/Control3/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="player/ui/Control3/exit" to="." method="_on_exit_pressed"]

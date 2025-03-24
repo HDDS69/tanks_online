@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c46hrofjre5js"]
 
 [ext_resource type="Texture2D" uid="uid://bet65k5yy16qi" path="res://texture/mirage.png" id="1_fd2f2"]
-[ext_resource type="Script" path="res://script/multiplayer.gd" id="1_u4hl7"]
+[ext_resource type="Script" uid="uid://vx2xrxlvo6ub" path="res://script/multiplayer.gd" id="1_u4hl7"]
 [ext_resource type="Texture2D" uid="uid://bfqjf738gmra7" path="res://texture/swadows.png" id="2_7xnuj"]
 [ext_resource type="Texture2D" uid="uid://bpuofdskso1fe" path="res://texture/plam.png" id="3_ur5uo"]
 [ext_resource type="Texture2D" uid="uid://c766by0c7wtth" path="res://texture/bg.png" id="5_7ys1p"]
@@ -134,7 +134,7 @@ offset_bottom = 34.4523
 text = "settings"
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://tscn/level.tscn")
+_spawnable_scenes = PackedStringArray("uid://guuhxatv6pek")
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 

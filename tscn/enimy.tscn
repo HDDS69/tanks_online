@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dkpxdi1jx73be"]
 
 [ext_resource type="Texture2D" uid="uid://3p73wf2iam0a" path="res://texture/tank.png" id="1_8emey"]
-[ext_resource type="Script" path="res://script/enimy.gd" id="1_d4m60"]
+[ext_resource type="Script" uid="uid://bpvwd7jgmc72f" path="res://script/enimy.gd" id="1_d4m60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks4f3"]
 size = Vector2(16, 21)

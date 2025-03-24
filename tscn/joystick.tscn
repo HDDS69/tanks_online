@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://di33echt7hdsm"]
 
-[ext_resource type="Script" path="res://script/joystick.gd" id="1_nv4v6"]
+[ext_resource type="Script" uid="uid://bpcm84c8n68yx" path="res://script/joystick.gd" id="1_nv4v6"]
 [ext_resource type="Texture2D" uid="uid://hgj2lummvf1b" path="res://texture/stick.png" id="2_7vm64"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awmoh"]

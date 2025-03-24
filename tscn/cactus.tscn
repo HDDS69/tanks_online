@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://co86tsqlgdmft"]
 
 [ext_resource type="Texture2D" uid="uid://bvboqf7a6xndq" path="res://texture/cactus.png" id="1_6rc7i"]
-[ext_resource type="Script" path="res://tscn/cactus.gd" id="1_tn415"]
+[ext_resource type="Script" uid="uid://oote37p1jwu0" path="res://tscn/cactus.gd" id="1_tn415"]
 [ext_resource type="Texture2D" uid="uid://krmc3gncmcme" path="res://texture/boom_borel.png" id="3_kgdfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khtb0"]

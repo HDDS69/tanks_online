@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dwe8uyi30jkan"]
 
-[ext_resource type="Script" path="res://tscn/borel.gd" id="1_1kqpd"]
+[ext_resource type="Script" uid="uid://bamav4jreru31" path="res://tscn/borel.gd" id="1_1kqpd"]
 [ext_resource type="Texture2D" uid="uid://dhpjkhitlywbh" path="res://texture/borel.png" id="1_q6vm7"]
 [ext_resource type="Texture2D" uid="uid://krmc3gncmcme" path="res://texture/boom_borel.png" id="3_b1uod"]
 
