@@ -84,7 +84,8 @@ func _ready():
 func death():
 	$player/boom.play(\"boom\")
 	await $player/boom.animation_finished
-	queue_free()
+	$player/AnimatedSprite2D/Sprite2D.self_modulate = Color(0.337, 0.337, 0.337)
+	$Timer.start()
 	
 
 
@@ -102,6 +103,11 @@ func _on_exit_pressed() -> void:
 @rpc(\"any_peer\", \"reliable\",\"call_local\")
 func exit():
 	get_tree().change_scene_to_file(\"res://tscn/multiplay1er.tscn\")
+
+
+func _on_timer_timeout() -> void:
+	$player_input.death = false
+	$player/AnimatedSprite2D/Sprite2D.self_modulate = Color(0.0, 0.0, 0.0)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hegbh"]
@@ -504,7 +510,7 @@ fit_content = true
 script = ExtResource("1_gv026")
 
 [node name="TankPlayer" type="Sprite2D" parent="player"]
-modulate = Color(0, 0, 0, 0.203922)
+modulate = Color(0, 0, 0, 0)
 position = Vector2(6, 8)
 rotation = 1.57079
 scale = Vector2(4.91194, 4.91194)
@@ -730,6 +736,9 @@ spawn_path = NodePath("../mine")
 spawn_limit = 100
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="pressed" from="player/ui/Control3/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="player/ui/Control3/exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

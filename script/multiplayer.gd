@@ -64,7 +64,7 @@ func change_level(scene: PackedScene):
 func _input(event):
 	if not multiplayer.is_server():
 		return
-	if event.is_action("ui_home") and Input.is_action_just_pressed("ui_home"):
+	if event.is_action("ui_home") and Input.is_action_just_pressed("ui_home"): 
 		change_level.call_deferred(load("res://tscn/level.tscn"))
 	#if event.is_action('exit')  and Input.is_action_just_pressed('exit') :
 	#	change_level.call_deferred(load("res://tscn/multiplay1er.tscn"))

@@ -1,8 +1,9 @@
 extends Node2D
 var timer_baff = true
 var scale_list = [0.5,1,2]
+
 func _ready():
-	Autoload.load_game()	
+	Autoload.load_game()
 	if not multiplayer.is_server():
 		return
 	multiplayer.peer_connected.connect(add_player)
