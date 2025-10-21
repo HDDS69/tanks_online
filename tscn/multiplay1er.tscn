@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c46hrofjre5js"]
+[gd_scene load_steps=6 format=3 uid="uid://c46hrofjre5js"]
 
 [ext_resource type="Texture2D" uid="uid://bet65k5yy16qi" path="res://texture/mirage.png" id="1_fd2f2"]
 [ext_resource type="Script" uid="uid://vx2xrxlvo6ub" path="res://script/multiplayer.gd" id="1_u4hl7"]
 [ext_resource type="Texture2D" uid="uid://bfqjf738gmra7" path="res://texture/swadows.png" id="2_7xnuj"]
 [ext_resource type="Texture2D" uid="uid://bpuofdskso1fe" path="res://texture/plam.png" id="3_ur5uo"]
-[ext_resource type="Texture2D" uid="uid://c766by0c7wtth" path="res://texture/bg.png" id="5_7ys1p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6781i"]
 shadow_color = Color(0, 0, 0, 1)
@@ -14,25 +13,8 @@ script = ExtResource("1_u4hl7")
 
 [node name="bg" type="Node" parent="."]
 
-[node name="Bg" type="Sprite2D" parent="bg"]
-position = Vector2(2558, 756.603)
-scale = Vector2(1.20965, 1.42519)
-texture = ExtResource("5_7ys1p")
-
-[node name="Bg3" type="Sprite2D" parent="bg"]
-position = Vector2(2571, 37)
-scale = Vector2(1.20965, 1.42519)
-texture = ExtResource("5_7ys1p")
-
-[node name="Bg4" type="Sprite2D" parent="bg"]
-position = Vector2(4371, 646)
-rotation = -1.57064
-scale = Vector2(1.4177, 1.21603)
-skew = 5.93662e-05
-texture = ExtResource("5_7ys1p")
-
 [node name="Mirage" type="Sprite2D" parent="bg"]
-position = Vector2(700, 370)
+position = Vector2(648.00006, 356)
 scale = Vector2(0.985818, 0.987188)
 skew = 0.457727
 texture = ExtResource("1_fd2f2")
@@ -46,11 +28,6 @@ texture = ExtResource("3_ur5uo")
 position = Vector2(640.999, 350)
 scale = Vector2(1.01493, 0.977778)
 texture = ExtResource("2_7xnuj")
-
-[node name="Bg2" type="Sprite2D" parent="bg"]
-position = Vector2(496, 1493)
-scale = Vector2(1.05804, 1.23459)
-texture = ExtResource("5_7ys1p")
 
 [node name="UI" type="Control" parent="."]
 process_mode = 3

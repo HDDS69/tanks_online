@@ -511,7 +511,7 @@ script = ExtResource("1_gv026")
 
 [node name="TankPlayer" type="Sprite2D" parent="player"]
 modulate = Color(0, 0, 0, 0)
-position = Vector2(6, 8)
+position = Vector2(-1.5258789e-05, -1.9073486e-06)
 rotation = 1.57079
 scale = Vector2(4.91194, 4.91194)
 texture = ExtResource("2_4ibnf")

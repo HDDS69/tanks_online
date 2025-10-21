@@ -22,8 +22,8 @@ offset_bottom = 648.0
 scale = Vector2(4, 4)
 
 [node name="0" type="Sprite2D" parent="settings"]
-position = Vector2(208.5, 143.5)
-scale = Vector2(0.518311, 0.518311)
+position = Vector2(157.25, 98.999985)
+scale = Vector2(0.32635507, 0.32635507)
 texture = ExtResource("2_3du2t")
 
 [node name="music_button" type="Button" parent="settings"]
