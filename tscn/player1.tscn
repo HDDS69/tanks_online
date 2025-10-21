@@ -718,11 +718,11 @@ texture = ExtResource("1_b6ty8")
 
 [node name="player_input" type="MultiplayerSynchronizer" parent="."]
 root_path = NodePath(".")
-delta_interval = 0.05
 replication_config = SubResource("SceneReplicationConfig_tn81p")
 script = ExtResource("7_qok23")
 
 [node name="serversyn" type="MultiplayerSynchronizer" parent="."]
+process_mode = 4
 replication_config = SubResource("SceneReplicationConfig_0ms5y")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

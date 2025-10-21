@@ -68,6 +68,7 @@ func _input(event):
 		change_level.call_deferred(load("res://tscn/level.tscn"))
 	#if event.is_action('exit')  and Input.is_action_just_pressed('exit') :
 	#	change_level.call_deferred(load("res://tscn/multiplay1er.tscn"))
+	
 @rpc  # Делает функцию доступной для удаленных вызовов
 func set_nickname(nickname: String):
 	Autoload.nickname1 = nickname

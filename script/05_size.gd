@@ -13,12 +13,6 @@ func _ready() -> void:
 		$"2Size".visible = true
 		$"2Size2".visible = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.name != 'TileMapLayer':
 		body.scale = scale_tank
